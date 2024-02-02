@@ -1,4 +1,4 @@
-FILES = philo.c eatsleepthink.c parsing.c quit.c routine.c time.c semaphores.c minilibft.c cleaning.c rw_data.c
+FILES = philo.c eatsleepthink.c parsing.c quit.c routine.c time.c semaphores.c minilibft.c cleaning.c rw_data.c rw_data_2.c
 
 SRCS = $(addprefix $(SRCDIR),$(FILES))
 
