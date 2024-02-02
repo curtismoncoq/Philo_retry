@@ -8,7 +8,7 @@ SRCDIR = srcs/
 
 OBJDIR = objs/
 
-NAME = philo
+NAME = philo_bonus
 
 ARGS = 2 300 200 200 2
 
