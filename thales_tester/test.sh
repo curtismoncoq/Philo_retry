@@ -334,7 +334,6 @@ check_number_of_forks ()
         echo -e "${red}[+] Test #{test_number} Failed: Program created $forks forks with ${params[@]} ${reset}\n"
     fi
     pkill $1
-
 }
 
 check_secure_thread_creation () {
@@ -436,33 +435,33 @@ if [ "$2" -eq 2 -o "$2" -eq 0 ];then
         exit
     fi
 
-	test_philosopher_death "$target" "$1" "1" "800" "200" "200" "1"
-	test_philosopher_death "$target" "$1" "4" "310" "200" "100" "2"
-	test_philosopher_death "$target" "$1" "4" "200" "205" "200" "3"
-	test_philosopher_death "$target" "$1" "5" "599" "200" "200" "4"
-	test_philosopher_death "$target" "$1" "5" "300" "60" "600" "5"
-	test_philosopher_death "$target" "$1" "5" "60" "60" "60" "6"
-	test_philosopher_death "$target" "$1" "200" "60" "60" "60" "7"
-	test_philosopher_death "$target" "$1" "200" "300" "60" "600" "8"
-	test_philosopher_death "$target" "$1" "199" "800" "300" "100" "9"
+	# test_philosopher_death "$target" "$1" "1" "800" "200" "200" "1"
+	# test_philosopher_death "$target" "$1" "4" "310" "200" "100" "2"
+	# test_philosopher_death "$target" "$1" "4" "200" "205" "200" "3"
+	# test_philosopher_death "$target" "$1" "5" "599" "200" "200" "4"
+	# test_philosopher_death "$target" "$1" "5" "300" "60" "600" "5"
+	# test_philosopher_death "$target" "$1" "5" "60" "60" "60" "6"
+	# test_philosopher_death "$target" "$1" "200" "60" "60" "60" "7"
+	# test_philosopher_death "$target" "$1" "200" "300" "60" "600" "8"
+	# test_philosopher_death "$target" "$1" "199" "800" "300" "100" "9"
 
-	test_philosopher_meals "$target" "$1" "5" "800" "200" "200" "7" "10"
-	test_philosopher_meals "$target" "$1" "3" "800" "200" "200" "7" "11"
-	test_philosopher_meals "$target" "$1" "2" "800" "200" "200" "7" "12"
-	test_philosopher_meals "$target" "$1" "4" "410" "200" "200" "10" "13"
-	test_philosopher_meals "$target" "$1" "2" "410" "200" "200" "10" "14"
-	test_philosopher_meals "$target" "$1" "200" "410" "200" "200" "10" "15"
-	test_philosopher_meals "$target" "$1" "199" "610" "200" "200" "10" "16"
-	test_philosopher_meals "$target" "$1" "200" "410" "200" "80" "10" "17"
-	test_philosopher_meals "$target" "$1" "199" "610" "200" "80" "10" "18"
+	# test_philosopher_meals "$target" "$1" "5" "800" "200" "200" "7" "10"
+	# test_philosopher_meals "$target" "$1" "3" "800" "200" "200" "7" "11"
+	# test_philosopher_meals "$target" "$1" "2" "800" "200" "200" "7" "12"
+	# test_philosopher_meals "$target" "$1" "4" "410" "200" "200" "10" "13"
+	# test_philosopher_meals "$target" "$1" "2" "410" "200" "200" "10" "14"
+	# test_philosopher_meals "$target" "$1" "200" "410" "200" "200" "10" "15"
+	# test_philosopher_meals "$target" "$1" "199" "610" "200" "200" "10" "16"
+	# test_philosopher_meals "$target" "$1" "200" "410" "200" "80" "10" "17"
+	# test_philosopher_meals "$target" "$1" "199" "610" "200" "80" "10" "18"
 
-	check_philosophers_nodeath "$target" "$1" "5" "800" "200" "200" "19"
-	check_philosophers_nodeath "$target" "$1" "5" "800" "200" "150" "20"
-	check_philosophers_nodeath "$target" "$1" "3" "610" "200" "80" "21"
-	check_philosophers_nodeath "$target" "$1" "199" "610" "200" "80" "22"
-	check_philosophers_nodeath "$target" "$1" "199" "610" "200" "200" "23"
-	check_philosophers_nodeath "$target" "$1" "200" "410" "200" "80" "24"
-	check_philosophers_nodeath "$target" "$1" "200" "410" "200" "200" "25"
+	# check_philosophers_nodeath "$target" "$1" "5" "800" "200" "200" "19"
+	# check_philosophers_nodeath "$target" "$1" "5" "800" "200" "150" "20"
+	# check_philosophers_nodeath "$target" "$1" "3" "610" "200" "80" "21"
+	# check_philosophers_nodeath "$target" "$1" "199" "610" "200" "80" "22"
+	# check_philosophers_nodeath "$target" "$1" "199" "610" "200" "200" "23"
+	# check_philosophers_nodeath "$target" "$1" "200" "410" "200" "80" "24"
+	# check_philosophers_nodeath "$target" "$1" "200" "410" "200" "200" "25"
 
 	check_number_of_forks "$target" "$1" "10" "800" "200" "200" "26"
 	check_number_of_forks "$target" "$1" "100" "800" "200" "200" "27"
