@@ -6,7 +6,7 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:16:43 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/02/06 16:51:17 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:01:49 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,16 +99,16 @@ void	*ft_start_all(void *data)
 	return (data);
 }
 
-void	ft_while_monitor(t_data *d, int i)
+void	ft_while_monitor(t_data *d, int i, int min)
 {
 	while (!r_ended(d))
 	{
 		i = -1;
-		w_min(d, r_meals(d));
+		min = r_meals(d);
 		while (++i < d->arg->phi)
 		{
-			if (r_meals(d + i) < r_min(d))
-				w_min(d, r_meals(d + i));
+			if (r_meals(d + i) < min)
+				min = r_meals(d + i);
 			if (r_ate(d + i) != 1 && ft_time() - r_ate(d + i) > d->arg->die
 				&& !r_ended(d))
 			{
@@ -119,6 +119,7 @@ void	ft_while_monitor(t_data *d, int i)
 				pthread_mutex_unlock(d->start_mutex);
 			}
 		}
+		w_min(d, min);
 		if (!r_ended(d) && d->arg->max_eat >= 0 && r_min(d) >= d->arg->max_eat)
 			w_ended(d, 1);
 		usleep(1);
@@ -136,6 +137,6 @@ void	*ft_monitor(void *data)
 			return (data);
 		usleep(10);
 	}
-	ft_while_monitor(d, -1);
+	ft_while_monitor(d, -1, 0);
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:15:01 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/02/06 17:26:44 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:12:26 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ void	wait_for_others(t_data *d)
 		return ;
 	while (!r_ended(d) && r_meals(d) > r_min(d))
 	{
-		usleep(10);
+		usleep(1000);
 	}
+	pthread_mutex_lock(d->start_mutex);
+	printf("%d ate %d times min is %d..\n", d->id, r_meals(d), r_min(d));
+	pthread_mutex_unlock(d->start_mutex);
 }
 
 void	eat(t_data *d)

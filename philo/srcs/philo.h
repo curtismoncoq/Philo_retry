@@ -6,7 +6,7 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:25:37 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/02/06 16:49:27 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:01:42 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int			ft_init_mutex(t_data *d, pthread_mutex_t *mutex, pthread_t *thread);
 int			ft_init_threads(t_data *d, pthread_t *monitor, pthread_t *thread);
 int			ft_fail(pthread_t *thread, t_data *d, int th, int mut);
 int			ft_init_data(t_data *d, t_time *t, t_args *args);
-void		ft_while_monitor(t_data *d, int i);
+void		ft_while_monitor(t_data *d, int i, int min);
 int			ft_parsing(int ac, char **av, t_args *arg);
 void		*ft_calloc(size_t nmemb, size_t size);
 void		w_ate(t_data *d, long long value);
@@ -93,7 +93,7 @@ void		take_forks_1(t_data *d);
 void		sleep_think(t_data *d);
 void		*routine2(void *data);
 void		*routine(void *data);
-long long	r_meals(t_data *d);
+int			r_meals(t_data *d);
 void		w_meals(t_data *d);
 int			r_ended(t_data *d);
 int			r_start(t_data *d);
