@@ -6,7 +6,7 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:25:37 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/02/06 14:11:56 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:49:27 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,15 @@ int			ft_init_mutex(t_data *d, pthread_mutex_t *mutex, pthread_t *thread);
 int			ft_init_threads(t_data *d, pthread_t *monitor, pthread_t *thread);
 int			ft_fail(pthread_t *thread, t_data *d, int th, int mut);
 int			ft_init_data(t_data *d, t_time *t, t_args *args);
-void		ft_while_monitor(t_data *d, int i, int finito);
+void		ft_while_monitor(t_data *d, int i);
 int			ft_parsing(int ac, char **av, t_args *arg);
 void		*ft_calloc(size_t nmemb, size_t size);
 void		w_ate(t_data *d, long long value);
+void		w_min(t_data *d, int value);
 void		w_ended(t_data *d, int value);
 void		w_start(t_data *d, int value);
 void		ft_putstr_fd(char *s, int fd);
+void		wait_for_others(t_data *d);
 void		*ft_start_all(void *data);
 int			ft_atoi(const char *str);
 int			ft_verif_atoi(char *str);
@@ -97,6 +99,7 @@ int			r_ended(t_data *d);
 int			r_start(t_data *d);
 int			ft_issign(char c);
 int			ft_isdigit(int c);
+int			r_min(t_data *d);
 long long	r_ate(t_data *d);
 void		eat(t_data *d);
 long long	ft_time(void);

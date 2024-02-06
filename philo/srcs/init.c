@@ -6,7 +6,7 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:21:35 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/02/06 14:12:26 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:05:13 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	ft_init_threads(t_data *d, pthread_t *monitor, pthread_t *thread)
 
 	*(d->start) = ft_time();
 	w_start(d, 1);
+	w_min(d, 0);
 	if (pthread_create(&monitor[0], NULL, ft_monitor, (void *)d))
 		return (ft_fail(thread, d, 0, d->arg->phi));
 	if (pthread_create(&monitor[1], NULL, ft_start_all, (void *)d))

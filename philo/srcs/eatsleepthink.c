@@ -6,19 +6,31 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:15:01 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/01/26 13:54:17 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:26:44 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	wait_for_others(t_data *d)
+{
+	if (!d)
+		return ;
+	while (!r_ended(d) && r_meals(d) > r_min(d))
+	{
+		usleep(10);
+	}
+}
 
 void	eat(t_data *d)
 {
 	if (!r_ended(d) && ft_time() - r_ate(d) > d->arg->die)
 	{
 		w_ended(d, -1);
-		while (!r_ended(d))
-			(usleep(1000));
+		usleep(10);
+		pthread_mutex_lock(d->start_mutex);
+		printf("%lld %d died\n", ft_time() - *(d->start), d->id);
+		pthread_mutex_unlock(d->start_mutex);
 	}
 	if (!r_ended(d) && ft_time() - r_ate(d) <= d->arg->die)
 	{

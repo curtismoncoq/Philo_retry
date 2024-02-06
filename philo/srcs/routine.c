@@ -6,19 +6,11 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:16:43 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/02/06 16:18:20 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:51:17 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	wait_for_others(t_data *d)
-{
-	while(!r_ended(d) && d->meals > r_min_meals(d))
-	{
-		usleep(10);
-	}
-}
 
 void	*routine(void *data)
 {
@@ -107,17 +99,16 @@ void	*ft_start_all(void *data)
 	return (data);
 }
 
-void	ft_while_monitor(t_data *d, int i, int finito)
+void	ft_while_monitor(t_data *d, int i)
 {
 	while (!r_ended(d))
 	{
 		i = -1;
-		finito = 1;
+		w_min(d, r_meals(d));
 		while (++i < d->arg->phi)
 		{
-			if (r_meals(d + i) < )	//!
-			if (d->arg->max_eat < 0 || r_min_meals(d + i) < d->arg->max_eat)
-				finito = 0;
+			if (r_meals(d + i) < r_min(d))
+				w_min(d, r_meals(d + i));
 			if (r_ate(d + i) != 1 && ft_time() - r_ate(d + i) > d->arg->die
 				&& !r_ended(d))
 			{
@@ -128,7 +119,7 @@ void	ft_while_monitor(t_data *d, int i, int finito)
 				pthread_mutex_unlock(d->start_mutex);
 			}
 		}
-		if (finito && !r_ended(d))
+		if (!r_ended(d) && d->arg->max_eat >= 0 && r_min(d) >= d->arg->max_eat)
 			w_ended(d, 1);
 		usleep(1);
 	}
@@ -145,6 +136,6 @@ void	*ft_monitor(void *data)
 			return (data);
 		usleep(10);
 	}
-	ft_while_monitor(d, -1, 1);
+	ft_while_monitor(d, -1);
 	return (data);
 }

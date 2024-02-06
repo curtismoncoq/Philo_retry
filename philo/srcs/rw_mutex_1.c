@@ -6,7 +6,7 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:13:09 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/01/17 18:28:36 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/02/06 16:51:47 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,11 @@ void	w_meals(t_data *d)
 	pthread_mutex_lock(d->ate_mutex);
 	d->meals++;
 	pthread_mutex_unlock(d->ate_mutex);
+}
+
+void	w_min(t_data *d, int value)
+{
+	pthread_mutex_lock(d->start_mutex);
+	*(d->min_meals) = value;
+	pthread_mutex_unlock(d->start_mutex);
 }
