@@ -6,19 +6,11 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:16:43 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/02/06 16:18:20 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:29:20 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void	wait_for_others(t_data *d)
-{
-	while(!r_ended(d) && d->meals > r_min_meals(d))
-	{
-		usleep(10);
-	}
-}
 
 void	*routine(void *data)
 {
@@ -37,7 +29,6 @@ void	*routine(void *data)
 		usleep(d->arg->eat * 500);
 	while (!r_ended(d))
 	{
-		wait_for_others(d);
 		take_forks_1(d);
 		eat(d);
 		pthread_mutex_unlock(d->mutex);
@@ -66,7 +57,6 @@ void	*routine2(void *data)
 		usleep(d->arg->eat * 500);
 	while (!r_ended(d))
 	{
-		wait_for_others(d);
 		take_forks_2(d);
 		eat(d);
 		pthread_mutex_unlock(d->mutex_next);
@@ -115,8 +105,7 @@ void	ft_while_monitor(t_data *d, int i, int finito)
 		finito = 1;
 		while (++i < d->arg->phi)
 		{
-			if (r_meals(d + i) < )	//!
-			if (d->arg->max_eat < 0 || r_min_meals(d + i) < d->arg->max_eat)
+			if (d->arg->max_eat < 0 || r_meals(d + i) < d->arg->max_eat)
 				finito = 0;
 			if (r_ate(d + i) != 1 && ft_time() - r_ate(d + i) > d->arg->die
 				&& !r_ended(d))

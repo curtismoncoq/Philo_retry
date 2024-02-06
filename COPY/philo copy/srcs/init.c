@@ -6,7 +6,7 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:21:35 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/02/06 14:12:26 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:31:40 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	ft_init_data(t_data *d, t_time *t, t_args *args)
 		(d + i)->start = &(t->start);
 		(d + i)->ate = 0;
 		(d + i)->start_lock = &(t->start_lock);
-		(d + i)->min_meals = &(t->min_meals);
 		(d + i)->ended = &(t->ended);
 		(d + i)->end_mutex = &(t->end_mutex);
 		(d + i)->start_mutex = &(t->start_mutex);

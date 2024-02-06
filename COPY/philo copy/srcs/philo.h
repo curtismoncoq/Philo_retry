@@ -6,7 +6,7 @@
 /*   By: cumoncoq <cumoncoq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 18:25:37 by cumoncoq          #+#    #+#             */
-/*   Updated: 2024/02/06 14:11:56 by cumoncoq         ###   ########.fr       */
+/*   Updated: 2024/01/24 19:21:55 by cumoncoq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_time
 {
 	long long		start;
 	int				start_lock;
-	int				min_meals;
 	int				ended;
 	pthread_mutex_t	end_mutex;
 	pthread_mutex_t	start_mutex;
@@ -60,7 +59,6 @@ typedef struct s_data
 	long long		ate;
 	int				*ended;
 	int				*start_lock;
-	int				*min_meals;
 	int				meals;
 	t_args			*arg;
 }	t_data;
